@@ -18,16 +18,13 @@ public abstract class Conta extends Object implements Comparable<Conta> {
 
   public void saca(double valor) throws SaldoInsuficienteException {
     if (this.saldo < valor) {
-      throw new SaldoInsuficienteException(
-        "Saldo: " + this.saldo + ", Valor: " + valor
-      );
+      throw new SaldoInsuficienteException("Saldo: " + this.saldo + ", Valor: " + valor);
     }
 
     this.saldo -= valor;
   }
 
-  public void transfere(double valor, Conta destino)
-    throws SaldoInsuficienteException {
+  public void transfere(double valor, Conta destino) throws SaldoInsuficienteException {
     this.saca(valor);
     destino.deposita(valor);
   }
@@ -94,13 +91,6 @@ public abstract class Conta extends Object implements Comparable<Conta> {
 
   @Override
   public String toString() {
-    return (
-      "Numero: " +
-      this.numero +
-      ", Agencia: " +
-      this.agencia +
-      ", Saldo: " +
-      this.saldo
-    );
+    return ("Numero: " + this.numero + ", Agencia: " + this.agencia + ", Saldo: " + this.saldo);
   }
 }
